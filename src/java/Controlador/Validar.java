@@ -12,12 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet(name = "Validar", urlPatterns = {"/Validar"})
+ @WebServlet(name = "Validar", urlPatterns = {"/Validar"})
 public class Validar extends HttpServlet {
-
     MedicosDao edao=new MedicosDao();
    Medicos em= new Medicos();
-   
+  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -33,6 +32,27 @@ public class Validar extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
         }
+        
+          String accion=request.getParameter("accion");
+        if(accion.equalsIgnoreCase("Ingresar")){
+            String user=request.getParameter("txtuser");
+            String pass=request.getParameter("txtpass");
+                    em=edao.Validar(user, pass);
+                    if (em.getUser()!= null){
+                        request.setAttribute("usuario", em);
+                        
+                     request.getRequestDispatcher("Controlador?accion=Principal.jsp").forward(request, response);
+                    }else{
+                        // request.getRequestDispatcher("index.jsp").forward(request, response);
+                        
+                     request.getRequestDispatcher("Principal.jsp").forward(request, response);
+       
+                    }
+        }
+        else{
+                     
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+    }
     }
 
    

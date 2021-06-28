@@ -23,7 +23,7 @@ public class MedicosDao {
     public Medicos Validar(String user, String dni){
         
         Medicos em=new Medicos();
-        String sql="Select * form medicos  where User=? and Dni=?";
+        String sql="Select * from medicos where User=? and Dni=?";
         
         try{
             con=cn.Conexion();

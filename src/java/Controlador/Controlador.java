@@ -5,6 +5,8 @@
  */
 package Controlador;
 
+import Modelo.AdminDao;
+import Modelo.Administrador;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,7 +22,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "Controlador", urlPatterns = {"/Controlador"})
 public class Controlador extends HttpServlet {
 
-    
+    //Administrador ad= new Administrador();
+    //AdminDao adao= new AdminDao();
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          String accion= request.getParameter("accion");
